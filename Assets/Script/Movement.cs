@@ -10,6 +10,9 @@ public class Movement : MonoBehaviour
     public Transform GroundCheck;
     public float GoundCheckRadius = 1f;
     public float MaxSlopeAngle = 45f;
+
+    public Cooldown CoyoteTime;
+    public Cooldown BufferJump;
     
     public LayerMask GroundLayerMask;
 
@@ -108,12 +111,24 @@ public class Movement : MonoBehaviour
         if (_rigidbody.velocity.y <= 0f)
         {
             _IsJumping = false;
+            // CoyoteTime.StopCooldown();;
+
         }
 
         if (IsGrounded && !IsJumping && _slopeDownAngle <= MaxSlopeAngle)
         {
             _canJump = true;
+            if(CoyoteTime.CurrentProgress != Cooldown.Progress.Ready)
+                CoyoteTime.StopCooldown();;
+
+            if (BufferJump.CurrentProgress is Cooldown.Progress.Started or Cooldown.Progress.Inprogress)
+            {
+                DoJump();
+            }
         }
+        
+        if(!IsGrounded && !IsJumping && CoyoteTime.CurrentProgress == Cooldown.Progress.Ready)
+            CoyoteTime.StartCooldown();
     }
 
     protected void CheckSlope()
@@ -185,19 +200,28 @@ public class Movement : MonoBehaviour
         }
     }
 
+    protected virtual void TryBufferJump()
+    {
+        BufferJump.StartCooldown();
+    }
     
     protected virtual void DoJump()
     {
-        if (!IsGrounded)
-            return;
+        TryBufferJump();;
 
         if (!_canJump)
             return;
+
+        if (CoyoteTime.CurrentProgress == Cooldown.Progress.Finished)
+            return;
         
+
         _canJump = false;
         _IsJumping = true;
         
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, JumpForce);
+        CoyoteTime.StopCooldown();;
+        
     }
 
 }
