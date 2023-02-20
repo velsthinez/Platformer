@@ -31,12 +31,7 @@ public class AnimationHandler : MonoBehaviour
         if (_movement == null)
             return;
 
-        if (_movement.FlipAnim)
-            transform.localScale = _flipScale;
-        else
-        {
-            transform.localScale = _initialScale;
-        }
+        transform.localScale = _movement.FlipAnim ? _flipScale : _initialScale;
     }
 
     private void UpdateAnimator()

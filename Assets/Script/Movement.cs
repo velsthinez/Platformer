@@ -54,6 +54,9 @@ public class Movement : MonoBehaviour
 
     private Vector2 _slopeNormalPerpendicular = Vector2.zero;
 
+    private MovingPlatform _movingPlatform;
+    private RaycastHit2D _movingPlatformHit;
+    
     //anim
     public bool FlipAnim = false;
     
@@ -65,10 +68,12 @@ public class Movement : MonoBehaviour
     
     protected Vector2 _inputDirection;
     protected Rigidbody2D _rigidbody;
+    protected Collider2D _collider2D;
 
     protected virtual void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _collider2D = GetComponent<Collider2D>();
     }
 
     protected virtual void Update()
@@ -76,7 +81,7 @@ public class Movement : MonoBehaviour
         HandleInput();
     }
 
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         CheckGround();
         CheckSlope();
@@ -115,6 +120,8 @@ public class Movement : MonoBehaviour
             _rigidbody.velocity = Vector3.SmoothDamp(_rigidbody.velocity, targetVelocity,ref m_Velocity, m_MovementSmoothing);
         }
 
+        transform.parent = _movingPlatform != null ? _movingPlatform.transform : null;
+        
         if (targetVelocity.x == 0)
         {
             _IsRunning = false;
@@ -124,7 +131,7 @@ public class Movement : MonoBehaviour
             _IsRunning = true;
         }
     }
-
+    
     protected void CheckGround()
     {
 
@@ -149,6 +156,23 @@ public class Movement : MonoBehaviour
             {
                 DoJump();
             }
+            
+            // try to check if we are in a moving platform
+            _movingPlatformHit = Physics2D.Raycast(GroundCheck.position, Vector2.down, 1f, GroundLayerMask);
+
+            if (_movingPlatformHit)
+            {
+                MovingPlatform temp = _movingPlatformHit.collider.GetComponent<MovingPlatform>();
+
+                if (temp != null)
+                    _movingPlatform = temp;
+                else
+                {
+                    _movingPlatform = null;
+                }
+            }
+            
+
         }
         
         if(!IsGrounded && !IsJumping && CoyoteTime.CurrentProgress == Cooldown.Progress.Ready)
@@ -214,7 +238,11 @@ public class Movement : MonoBehaviour
             _canWalkOnSlope = true;
         }
 
-        if (IsOnSlope && _canWalkOnSlope && _inputDirection.x == 0)
+        if (IsOnSlope && _canWalkOnSlope && _inputDirection.x == 0 )
+        {
+            _rigidbody.sharedMaterial = FullFriction;
+        }
+        else if (_movingPlatform && _inputDirection.x == 0)
         {
             _rigidbody.sharedMaterial = FullFriction;
         }
