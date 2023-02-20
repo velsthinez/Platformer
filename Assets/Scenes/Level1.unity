@@ -123,6 +123,43 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &181621218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4546091984478588478, guid: 2d76b33953e98234fad24035afdc1e04, type: 3}
+  m_PrefabInstance: {fileID: 4546091984595908681}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &181621221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181621218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6938ed96583ab2549a3707384291c673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &181621222
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181621218}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 97c9e3ffd99f94f40bb23b49001f8dc6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &205799143
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +975,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -11, y: -5, z: 0}
-  m_Size: {x: 22, y: 5, z: 1}
+  m_Size: {x: 22, y: 8, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -1052,11 +1089,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4546091984224284486, guid: 2d76b33953e98234fad24035afdc1e04, type: 3}
       propertyPath: BufferJump.Duration
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4546091984224284486, guid: 2d76b33953e98234fad24035afdc1e04, type: 3}
       propertyPath: CoyoteTime.Duration
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4546091984224284486, guid: 2d76b33953e98234fad24035afdc1e04, type: 3}
       propertyPath: CoyoteTime.CurrentProgress
@@ -1118,6 +1155,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -60770800, guid: c483493eb3ec0f143b5d78ad823ac661, type: 3}
+    - target: {fileID: 4546091984478588464, guid: 2d76b33953e98234fad24035afdc1e04, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546091984478588464, guid: 2d76b33953e98234fad24035afdc1e04, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546091984478588464, guid: 2d76b33953e98234fad24035afdc1e04, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4546091984478588465, guid: 2d76b33953e98234fad24035afdc1e04, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.4906406

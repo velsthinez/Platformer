@@ -25,8 +25,20 @@ public class Movement : MonoBehaviour
     {
         get { return _IsJumping; }
     }
+
+    public bool IsFalling
+    {
+        get { return _IsFalling; }
+    }
+    
+    public bool IsRunning
+    {
+        get { return _IsRunning; }
+    }
     
     private bool _IsJumping = false;
+    private bool _IsFalling = false;
+    private bool _IsRunning = false;
     private bool _canJump = true;
     
     private RaycastHit2D _slopeHit;
@@ -41,6 +53,9 @@ public class Movement : MonoBehaviour
     private bool _canWalkOnSlope = false;
 
     private Vector2 _slopeNormalPerpendicular = Vector2.zero;
+
+    //anim
+    public bool FlipAnim = false;
     
     public Vector2 InputDirection
     {
@@ -67,6 +82,7 @@ public class Movement : MonoBehaviour
         CheckSlope();
         
         HandleMovement();
+        Flip();
     }
 
     protected virtual void HandleInput()
@@ -97,10 +113,16 @@ public class Movement : MonoBehaviour
         {
             targetVelocity = new Vector2(_inputDirection.x * (Acceleration), _rigidbody.velocity.y);
             _rigidbody.velocity = Vector3.SmoothDamp(_rigidbody.velocity, targetVelocity,ref m_Velocity, m_MovementSmoothing);
-
         }
-        
-             
+
+        if (targetVelocity.x == 0)
+        {
+            _IsRunning = false;
+        }
+        else
+        {
+            _IsRunning = true;
+        }
     }
 
     protected void CheckGround()
@@ -112,12 +134,14 @@ public class Movement : MonoBehaviour
         {
             _IsJumping = false;
             // CoyoteTime.StopCooldown();;
-
+            _IsFalling = true;
         }
 
         if (IsGrounded && !IsJumping && _slopeDownAngle <= MaxSlopeAngle)
         {
             _canJump = true;
+            _IsFalling = false;
+
             if(CoyoteTime.CurrentProgress != Cooldown.Progress.Ready)
                 CoyoteTime.StopCooldown();;
 
@@ -218,10 +242,27 @@ public class Movement : MonoBehaviour
 
         _canJump = false;
         _IsJumping = true;
-        
+        _IsFalling = false;
+
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, JumpForce);
         CoyoteTime.StopCooldown();;
         
+    }
+    
+    protected virtual void Flip()
+    {
+        if (_inputDirection.x == 0)
+            return;
+
+        if (_inputDirection.x > 0)
+        {
+            FlipAnim = false;
+        }
+        else if (_inputDirection.x < 0)
+        {
+            FlipAnim = true;
+        }
+            
     }
 
 }
