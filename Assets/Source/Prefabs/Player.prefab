@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4546091984224284487}
   - component: {fileID: 4546091984224284486}
-  - component: {fileID: 4546091984224284484}
   - component: {fileID: 4546091984224284485}
+  - component: {fileID: 84420693}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -49,10 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Acceleration: 10
-  JumpForce: 16
+  JumpForce: 6
   GroundCheck: {fileID: 4546091984846650086}
   GoundCheckRadius: 0.4
-  MaxSlopeAngle: 45
+  MaxSlopeAngle: 50
   CoyoteTime:
     CurrentProgress: 0
     Duration: 0.1
@@ -67,32 +67,8 @@ MonoBehaviour:
   IsGrounded: 0
   IsOnSlope: 0
   FlipAnim: 0
---- !u!61 &4546091984224284484
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4546091984224284482}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  JumpHeldForce: 80
+  JumpHeldMaxDuration: 0.1
 --- !u!50 &4546091984224284485
 Rigidbody2D:
   serializedVersion: 4
@@ -114,6 +90,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!70 &84420693
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4546091984224284482}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0
 --- !u!1 &4546091984478588478
 GameObject:
   m_ObjectHideFlags: 0

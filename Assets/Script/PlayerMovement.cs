@@ -11,6 +11,7 @@ public class PlayerMovement : Movement
     private bool _inputJumped = false;
     
     private bool _inputDown = false;
+    private bool _triedHoldJump = false;
     private bool _canFallThrough = false;
     private RaycastHit2D fallthroughPlatformHit;
     private Collider2D targetPlatform;
@@ -37,7 +38,6 @@ public class PlayerMovement : Movement
                 
                 if (_JumpHeldCurrentDuration < JumpHeldMaxDuration && !_canJump && !_inputJumped)
                 {
-                    Debug.Log("buffer jump");
                     _rigidbody.velocity += new Vector2(0, JumpHeldForce * Time.deltaTime);
                     _JumpHeldCurrentDuration += Time.deltaTime;
                 }
@@ -50,16 +50,21 @@ public class PlayerMovement : Movement
 
         if (Input.GetButtonUp("Jump"))
         {
+            _JumpHeldCurrentDuration = JumpHeldMaxDuration;
             _inputJumped = false;
-            _JumpHeldCurrentDuration = 0f;
         }
     }
 
-    protected override void DoJump()
+    protected override void CheckGround()
     {
-        base.DoJump();
-        
-        Debug.Log("normal jump");
+        base.CheckGround();
+
+        if (IsGrounded)
+        {
+            _JumpHeldCurrentDuration = 0f;
+            _triedHoldJump = false;
+        }
+
     }
 
     protected override void FixedUpdate()

@@ -132,7 +132,7 @@ public class Movement : MonoBehaviour
         }
     }
     
-    protected void CheckGround()
+    protected virtual void CheckGround()
     {
 
         IsGrounded = Physics2D.OverlapCircle(GroundCheck.position, GoundCheckRadius, GroundLayerMask);
