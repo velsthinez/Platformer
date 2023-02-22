@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : Movement
 {
+    public float JumpHeldForce = 5f;
+    public float JumpHeldMaxDuration = 0.5f;
+    
+    private float _JumpHeldCurrentDuration = 0f;
+    private bool _inputJumped = false;
+    
     private bool _inputDown = false;
     private bool _canFallThrough = false;
     private RaycastHit2D fallthroughPlatformHit;
@@ -18,7 +24,7 @@ public class PlayerMovement : Movement
         else
             _inputDown = false;
         
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButton("Jump"))
         {
             if (_inputDown && _canFallThrough)
             {
@@ -26,10 +32,34 @@ public class PlayerMovement : Movement
             }
             else
             {
-                DoJump();
+                if (!_inputJumped)
+                    DoJump();
+                
+                if (_JumpHeldCurrentDuration < JumpHeldMaxDuration && !_canJump && !_inputJumped)
+                {
+                    Debug.Log("buffer jump");
+                    _rigidbody.velocity += new Vector2(0, JumpHeldForce * Time.deltaTime);
+                    _JumpHeldCurrentDuration += Time.deltaTime;
+                }
+                
+                if(_JumpHeldCurrentDuration >= JumpHeldMaxDuration)
+                    _inputJumped = true;
             }
             
         }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            _inputJumped = false;
+            _JumpHeldCurrentDuration = 0f;
+        }
+    }
+
+    protected override void DoJump()
+    {
+        base.DoJump();
+        
+        Debug.Log("normal jump");
     }
 
     protected override void FixedUpdate()

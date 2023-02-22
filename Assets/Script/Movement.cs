@@ -39,7 +39,7 @@ public class Movement : MonoBehaviour
     private bool _IsJumping = false;
     private bool _IsFalling = false;
     private bool _IsRunning = false;
-    private bool _canJump = true;
+    protected bool _canJump = true;
     
     private RaycastHit2D _slopeHit;
     private RaycastHit2D _slopeHitFront;
