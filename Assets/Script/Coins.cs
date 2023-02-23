@@ -9,6 +9,9 @@ public class Coins : MonoBehaviour
     public GameObject CollectedParticles;
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (!col.CompareTag("Player"))
+            return;
+        
         Debug.Log("collected");
         
         if (CollectedParticles)
