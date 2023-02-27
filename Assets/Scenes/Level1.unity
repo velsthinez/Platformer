@@ -1155,7 +1155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6750121559351692381, guid: ab85444af1d86054eb6efdd5be28e269, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.78
+      value: -9.24
       objectReference: {fileID: 0}
     - target: {fileID: 6750121559351692381, guid: ab85444af1d86054eb6efdd5be28e269, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1321,6 +1321,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ab21ffad7222d4baa3d324a82b70d3, type: 3}
+--- !u!1001 &1732397171181630816
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1732397170763485186, guid: 932ec91aa00bcb842b6a81733de978a7, type: 3}
+      propertyPath: m_Name
+      value: Crates
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732397170763485189, guid: 932ec91aa00bcb842b6a81733de978a7, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732397170763485189, guid: 932ec91aa00bcb842b6a81733de978a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732397170763485189, guid: 932ec91aa00bcb842b6a81733de978a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732397170763485189, guid: 932ec91aa00bcb842b6a81733de978a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.07201608
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732397170763485189, guid: 932ec91aa00bcb842b6a81733de978a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732397170763485189, guid: 932ec91aa00bcb842b6a81733de978a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732397170763485189, guid: 932ec91aa00bcb842b6a81733de978a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732397170763485189, guid: 932ec91aa00bcb842b6a81733de978a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732397170763485189, guid: 932ec91aa00bcb842b6a81733de978a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732397170763485189, guid: 932ec91aa00bcb842b6a81733de978a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732397170763485189, guid: 932ec91aa00bcb842b6a81733de978a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 932ec91aa00bcb842b6a81733de978a7, type: 3}
 --- !u!1001 &2844613255720111279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1388,18 +1445,6 @@ PrefabInstance:
     - target: {fileID: 4546091984224284482, guid: 2d76b33953e98234fad24035afdc1e04, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4546091984224284486, guid: 2d76b33953e98234fad24035afdc1e04, type: 3}
-      propertyPath: JumpForce
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4546091984224284486, guid: 2d76b33953e98234fad24035afdc1e04, type: 3}
-      propertyPath: JumpHeldForce
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 4546091984224284486, guid: 2d76b33953e98234fad24035afdc1e04, type: 3}
-      propertyPath: JumpHeldMaxDuration
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4546091984224284487, guid: 2d76b33953e98234fad24035afdc1e04, type: 3}
       propertyPath: m_RootOrder

@@ -4,7 +4,10 @@
     <list default="true" id="05a85ad9-22f7-4bbb-9ee6-a97f5941189c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Platformer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Platformer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Coins.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Coins.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Movement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/PhysicsMaterial/Slippery.physicsMaterial2D" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/PhysicsMaterial/Slippery.physicsMaterial2D" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Prefabs/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +20,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Script/Coins.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/GoombaMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Movement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/PlayerWeaponHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/WeaponCrate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Stomper.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -79,6 +86,7 @@
       <workItem from="1676861201361" duration="14740000" />
       <workItem from="1676960377838" duration="4680000" />
       <workItem from="1677030057666" duration="1359000" />
+      <workItem from="1677465207454" duration="21823000" />
     </task>
     <servers />
   </component>

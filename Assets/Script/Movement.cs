@@ -40,6 +40,7 @@ public class Movement : MonoBehaviour
     private bool _IsFalling = false;
     private bool _IsRunning = false;
     protected bool _canJump = true;
+    private bool _disableInput = false;
     
     private RaycastHit2D _slopeHit;
     private RaycastHit2D _slopeHitFront;
@@ -69,13 +70,62 @@ public class Movement : MonoBehaviour
     protected Vector2 _inputDirection;
     protected Rigidbody2D _rigidbody;
     protected Collider2D _collider2D;
+    protected Health _health;
 
+    protected GameObject damageSource;
+    
     protected virtual void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
+        _health = GetComponent<Health>();
+
+        if (_health != null)
+        {
+            _health.OnHit += Hit;
+            _health.OnHitReset += ResetMove;
+        }
     }
 
+    private void OnDisable()
+    {
+        if (_health != null)
+        {
+            _health.OnHit -= Hit;
+            _health.OnHitReset -= ResetMove;
+        }    
+    }
+
+    protected virtual void Hit(GameObject source)
+    {
+        float pushHorizontal = 0f;
+
+        if (source != null)
+            pushHorizontal = (source.transform.position.x < transform.position.x) ? JumpForce : -JumpForce;
+
+        damageSource = source;
+        
+        _rigidbody.velocity = Vector2.zero;
+
+        _rigidbody.velocity = new Vector2(pushHorizontal * 0.5f, JumpForce);
+        _disableInput = true;
+        
+        Physics2D.IgnoreCollision(damageSource.GetComponent<Collider2D>(), _collider2D, true);
+    }
+
+    protected virtual void ResetMove()
+    {
+        if (damageSource != null)
+        {
+            Collider2D damageCollider = damageSource.GetComponent<Collider2D>();
+
+            if (damageCollider != null && damageSource != null)
+                Physics2D.IgnoreCollision(damageCollider, _collider2D, false);
+        }
+
+        _disableInput = false;
+    }
+    
     protected virtual void Update()
     {
         HandleInput();
@@ -96,6 +146,9 @@ public class Movement : MonoBehaviour
     
     protected virtual void HandleMovement()
     {
+        if (_disableInput)
+            return;
+        
         if (_rigidbody == null)
             return;
 
@@ -259,6 +312,9 @@ public class Movement : MonoBehaviour
     
     protected virtual void DoJump()
     {
+        if (_disableInput)
+            return;
+        
         TryBufferJump();;
 
         if (!_canJump)
@@ -291,6 +347,11 @@ public class Movement : MonoBehaviour
             FlipAnim = true;
         }
             
+    }
+
+    public void StompJump()
+    {
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 100f);
     }
 
 }
