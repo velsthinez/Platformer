@@ -18,6 +18,8 @@ public class Coins : MonoBehaviour
         {
             Instantiate(CollectedParticles, transform.position, quaternion.identity);
         }
+
+        GameManager.Instance.TotalCoins++;
         
         Destroy(this.gameObject);
     }
